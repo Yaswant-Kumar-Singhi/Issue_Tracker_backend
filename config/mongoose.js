@@ -1,3 +1,4 @@
+//requirig global files
 const mongoose = require('mongoose');
 
 //connecting with mongodb using connection string
