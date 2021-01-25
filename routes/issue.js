@@ -8,7 +8,8 @@ const router = express.Router();
 const issueController = require("../controllers/issue_controller");
 
 // routes
-router.post("/issue",  issueController.createIssue);
+router.post("/project/:_id/issue",  issueController.create);
+router.get("/issuelist/",issueController.list)
 
 
 

@@ -27,11 +27,8 @@ const projectSchema = new mongoose.Schema(
       required: true,
       maxlength: 200,
       text: true,
-    },
-    issue : [{
-      type: ObjectId,
-      ref: "Issue",
-    }]
+    }
+   
     
     
   },
