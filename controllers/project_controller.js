@@ -2,6 +2,7 @@ const Project = require("../models/project");
 
 const slugify = require("slugify");
 
+
 module.exports.create = async (req, res) => {
   try {
     console.log(req.body);
@@ -24,5 +25,16 @@ module.exports.list = async (req, res) =>{
   .exec()
   res.json(projects)
 };
+
+
+module.exports.read = async (req, res) => {
+  const project = await Project.findOne({ slug: req.params.slug}).exec();
+  res.json(project);
+};
+
+
+
+
+
 
  
