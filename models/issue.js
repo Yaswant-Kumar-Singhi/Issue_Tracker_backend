@@ -31,7 +31,7 @@ const issueSchema = new mongoose.Schema(
       },
       project: {
         type: ObjectId,
-        ref: "Project",
+        ref : "Project"
       }
     },
     { timestamps: true }

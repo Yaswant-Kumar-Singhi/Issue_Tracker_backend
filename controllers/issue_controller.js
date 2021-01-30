@@ -1,6 +1,8 @@
 const Issue = require("../models/issue");
 const Project = require("../models/project")
 
+
+
 const slugify = require("slugify");
 
 /*
@@ -24,6 +26,7 @@ module.exports.createIssue = async (req, res) => {
   };
 */
 
+/*
 module.exports.create = async (req,res) => {
   try{
     
@@ -34,16 +37,30 @@ module.exports.create = async (req,res) => {
       author:  req.body.author,
       project : req.params._id
     })
-    if(req.xhr){
-      issue = await issue.populate('project').execPopulate()
-    }
-    
+    console.log(`my id is --- ${req.params._id}`)
+    res.json(issue)
   }
   catch(err){
     console.log('Error', err)
 
   }
 }
+*/
+
+module.exports.create = async (req, res) => {
+  try {
+    console.log(req.body);
+    req.body.slug = slugify(req.body.title);
+    const newIssue = await new Issue(req.body).save();
+    res.json(newIssue);
+  } catch (err) {
+    console.log(err);
+    // res.status(400).send("Create product failed");
+    res.status(400).json({
+      err: err.message,
+    });
+  }
+};
   
 module.exports.list = async (req, res) =>{
   let issuelist = await Issue.find({})

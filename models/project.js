@@ -28,7 +28,6 @@ const projectSchema = new mongoose.Schema(
       maxlength: 200,
       text: true,
     }
-   
     
     
   },
