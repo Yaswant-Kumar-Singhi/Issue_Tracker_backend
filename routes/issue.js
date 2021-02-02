@@ -10,7 +10,7 @@ const issueController = require("../controllers/issue_controller");
 
 // routes
 //router.post('/project/:_id/issue',  issueController.create);
-router.get("/issuelist/",issueController.list)
+router.get("/issuelist",issueController.list)
 
 //router.post('/project/:_id/issue',issueController.create);
 
