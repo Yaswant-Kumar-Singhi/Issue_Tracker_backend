@@ -1,4 +1,5 @@
 const Project = require("../models/project");
+const Issue = require("../models/issue")
 
 const slugify = require("slugify");
 
@@ -29,7 +30,16 @@ module.exports.list = async (req, res) =>{
 
 module.exports.read = async (req, res) => {
   const project = await Project.findOne({ slug: req.params.slug}).exec();
-  res.json(project);
+
+  // getting issue related to a project
+  const issue = await Issue.findOne({project})
+  .populate("project")
+  .populate("issue ")
+  .exec()
+
+  res.json({
+    project,
+    issue});
 };
 
 
